@@ -3,17 +3,18 @@ import * as actionTypes from './actionTypes';
 /**
  * function to dispatch movie details loading request
  */
-export function loadMovieDetails() {
+export function loadUsersList() {
     return {
-        type: actionTypes.LOAD_MOVIES_REQUEST,
+        type: actionTypes.LOAD_USERS_LIST_REQUEST,
     };
 }
 
 /**
  * function to dispatch login request
  */
-export function loginUser() {
+export function loadRepos(reposUrl) {
     return {
-        type: actionTypes.LOGIN_REQUEST,
+        type: actionTypes.LOAD_REPOS_REQUEST,
+        data: reposUrl,
     };
 }

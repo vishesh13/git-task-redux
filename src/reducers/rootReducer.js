@@ -1,5 +1,5 @@
-import netflixReducer from './netflixReducer';
+import gitReducer from './gitReducer';
 
-const rootReducer = netflixReducer;
+const rootReducer = gitReducer;
 
 export default rootReducer;
