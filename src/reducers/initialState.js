@@ -1,7 +1,11 @@
 export default {
-    movieDetailsState: {
-        details: [],
+    usersListState: {
+        list: [],
+        user: {
+            repos: [],
+            displayRepos: false,
+        },
         isLoading: false,
-        isFailed: false
+        isFailed: true,
     },
 };

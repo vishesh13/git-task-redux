@@ -1,5 +1,5 @@
-import { netflixSagas } from './netflixSagas';
+import { gitSagas } from './gitSagas';
 
-const combinedSagas = [netflixSagas];
+const combinedSagas = [gitSagas];
 
 export default combinedSagas;

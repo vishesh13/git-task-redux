@@ -1,43 +1,72 @@
 import React from 'react';
+import { makeStyles } from '@material-ui/core/styles';
+import List from '@material-ui/core/List';
+import ListItem from '@material-ui/core/ListItem';
+import Divider from '@material-ui/core/Divider';
+import ListItemText from '@material-ui/core/ListItemText';
+import ListItemAvatar from '@material-ui/core/ListItemAvatar';
+import Avatar from '@material-ui/core/Avatar';
+import Typography from '@material-ui/core/Typography';
+import Collapse from '@material-ui/core/Collapse';
+import AddingRowsView from './AddingRowsView';
 import './stylesheet.css';
+
+
+const useStyles = makeStyles((theme) => ({
+    inline: {
+        display: 'inline',
+    },
+}));
 
 /**
  * View Component of Intial LoggedIn Page
  */
-const LoginView = ({ handleLoginRequest }) => {
+const LoginView = ({ handleDisplayRepos, list = [], repos = [], displayCard }) => {
+    const classes = useStyles();
     return (
-        <div className="container" style={{ height: "100vh" }}>
-            <div className="app-bar">
-                <img style={{ position: "fixed", objectFit: "contain", left: "20px", width: "80px" }}
-                    src="https://upload.wikimedia.org/wikipedia/commons/0/0f/Logo_Netflix.png" alt="Netflix Logo" />
-                <div style={{ margin: "13% 0% 0% 25%" }}>
-                    <h1 className="h1-caption">Who's watching?</h1>
-                    <div className="login-container">
-                        <div>
-                            <img className="login-image"
-                                src="https://pbs.twimg.com/profile_images/1240119990411550720/hBEe3tdn_400x400.png" onClick={handleLoginRequest} alt="Netflix Logo" />
-                            <span className="profile-name">User 1</span>
-                        </div>
-                        <div>
-                            <img className="login-image"
-                                src="https://mir-s3-cdn-cf.behance.net/project_modules/disp/84c20033850498.56ba69ac290ea.png" alt="Netflix Logo" />
-                            <span className="profile-name">User 2</span>
-                        </div>
-                        <div>
-                            <img className="login-image"
-                                src="https://mir-s3-cdn-cf.behance.net/project_modules/disp/1bdc9a33850498.56ba69ac2ba5b.png" alt="Netflix Logo" />
-                            <span className="profile-name">User 3</span>
-                        </div>
-                        <div>
-                            <img className="login-image"
-                                src="https://mir-s3-cdn-cf.behance.net/project_modules/disp/bf6e4a33850498.56ba69ac3064f.png" alt="Netflix Logo" />
-                            <span className="profile-name">User 4</span>
-                        </div>
-                    </div>
-                </div>
-            </div>
+        <div className="container">
+            <List>
+                {list && list.length > 0 ? list.map((user, index) => {
+                    return (
+                        <React.Fragment>
+                            <ListItem alignItems="flex-start" onClick={handleDisplayRepos}
+                                {...{ id: `ITEM_${index}`, itemId: user.id, key: index }}
+                            >
+                                <ListItemAvatar className="images">
+                                    <Avatar alt="Image" src={user.avatar_url} style={{
+                                        width: '80px',
+                                        height: '85px',
+                                    }} />
+                                </ListItemAvatar>
+                                <ListItemText
+                                    primary={user.name}
+                                    secondary={
+                                        <React.Fragment>
+                                            <Typography
+                                                component="span"
+                                                variant="body2"
+                                                className={classes.inline}
+                                                color="textPrimary"
+                                            >
+                                                {user.login}
+                                            </Typography>
+                                            <br />
+                                            {`Followers: ${user.followers} Following: ${user.following}`}
+                                            <br />
+                                            {`Location: ${user.location}`}
+                                        </React.Fragment>
+                                    }
+                                />
+                            </ListItem>
+                            <Collapse in={displayCard}>
+                                <AddingRowsView repos={repos} />
+                            </Collapse>
+                            <Divider variant="inset" component="li" />
+                        </React.Fragment>)
+                }) : null}
+            </List>
         </div>
-    )
+    );
 }
 
 export default LoginView;
