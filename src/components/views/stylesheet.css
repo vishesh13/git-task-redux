@@ -20,6 +20,14 @@
 }
 
 .repo-container {
-    display: flex;
-    overflow-x: auto;
+    display: flex;    
+    padding: 15px;
+    align-content: center;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+    background-color: blanchedalmond;
+}
+
+.MuiPaper-root {
+    background-color: cornsilk;
 }

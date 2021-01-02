@@ -1,4 +1,4 @@
-export const API_KEY = 'b055add6df42f81f220dcf759b8e79237ceac07e';
+export const API_KEY = '823379535b1e24a52abea6dd58c3643cf853f1aa';
 export const BASE_URL = 'https://api.github.com/users';
 
 

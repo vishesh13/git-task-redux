@@ -22,7 +22,7 @@ const RepoCardView = ({ data }) => {
     const classes = useStyles();
 
     return (
-        <Card className={classes.root}>
+        <Card style={{ margin: '2%', width: '30%' }}>
             <CardContent>
                 <Typography className={classes.title} color="textSecondary" gutterBottom>
                     {data.name}
