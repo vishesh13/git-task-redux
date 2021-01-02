@@ -1,5 +1,6 @@
 import React from 'react';
 import LoginView from '../views/LoginView';
+import AddingRowsView from '../views/AddingRowsView';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import * as gitActions from '../../actions/gitAction';
@@ -40,9 +41,10 @@ class GitContainer extends React.Component {
 
     render() {
         const { list = [], repos = [] } = this.props;
-        //let content = isLoading ? <AddingRowsView details={details} /> : <LoginView handleLoginRequest={this.handleLoginRequest}/>;
+        let content = this.state.displayCard ? <AddingRowsView repos={repos} /> :
+            <LoginView handleDisplayRepos={this.handleDisplayRepos} list={list} />;
         return (
-            <LoginView handleDisplayRepos={this.handleDisplayRepos} list={list} repos={repos} displayCard={this.state.displayCard} />
+            content
         );
     }
 }

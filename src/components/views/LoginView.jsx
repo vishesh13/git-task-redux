@@ -8,7 +8,6 @@ import ListItemAvatar from '@material-ui/core/ListItemAvatar';
 import Avatar from '@material-ui/core/Avatar';
 import Typography from '@material-ui/core/Typography';
 import Collapse from '@material-ui/core/Collapse';
-import AddingRowsView from './AddingRowsView';
 import './stylesheet.css';
 
 
@@ -21,7 +20,7 @@ const useStyles = makeStyles((theme) => ({
 /**
  * View Component of Intial LoggedIn Page
  */
-const LoginView = ({ handleDisplayRepos, list = [], repos = [], displayCard }) => {
+const LoginView = ({ handleDisplayRepos, list = [] }) => {
     const classes = useStyles();
     return (
         <div className="container">
@@ -58,9 +57,6 @@ const LoginView = ({ handleDisplayRepos, list = [], repos = [], displayCard }) =
                                     }
                                 />
                             </ListItem>
-                            <Collapse in={displayCard}>
-                                <AddingRowsView repos={repos} />
-                            </Collapse>
                             <Divider variant="inset" component="li" />
                         </React.Fragment>)
                 }) : null}
